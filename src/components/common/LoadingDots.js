@@ -21,11 +21,13 @@ class LoadingDots extends React.Component {
   }
 
   render() {
-    let dots = this.state.frame % (this.props.dots + 1);
     let text = '';
-    while (dots > 0) {
-      text += '.';
-      dots--;
+    if (this.props.loading) {
+      let dots = this.state.frame % (this.props.dots + 1);
+      while (dots > 0) {
+        text += '.';
+        dots--;
+      }
     }
     return <span>{text}&nbsp;</span>;
   }
@@ -36,6 +38,7 @@ LoadingDots.defaultProps = {
 };
 
 LoadingDots.propTypes = {
+  loading: PropTypes.bool,
   interval: PropTypes.number,
   dots: PropTypes.number
 };

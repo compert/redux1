@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, IndexLink } from 'react-router';
+import {NavLink} from 'react-router-dom';
 import LoadingDots from './LoadingDots';
 
 const Header = ({loading}) => {
   return (
     <nav>
-      <IndexLink to="/" activeClassName="active">Home</IndexLink>
+      <NavLink exact to="/" activeClassName="active">Home</NavLink>
       {" | "}
-      <Link to="/courses" activeClassName="active">Courses</Link>
+      <NavLink to="/courses" activeClassName="active">Courses</NavLink>
       {" | "}
-      <Link to="/about" activeClassName="active">About</Link>
-      {loading && <LoadingDots interval={100} dots={20} />}
+      <NavLink to="/about" activeClassName="active">About</NavLink>
+      <LoadingDots interval={100} dots={20} loading={loading} />
     </nav>
   );
 };
